@@ -51,7 +51,7 @@ const JobPage = ({ isAuthenticated }) => {
 
   const onDeleteClick = (jobId) => {
     const confirm = window.confirm(
-      "Are you sure you want to delete this listing?" + jobId
+      "Are you sure you want to delete this listing? " + jobId
     );
     if (!confirm) return;
 
@@ -72,12 +72,15 @@ const JobPage = ({ isAuthenticated }) => {
           <p>Company: {job.company.name}</p>
           <p>Email: {job.company.contactEmail}</p>
           <p>Phone: {job.company.contactPhone}</p>
+          <p>Salary: ${job.salary}</p>
+          <p>Posted Date: {new Date(job.postedDate).toLocaleDateString()}</p>
+          <p>Status: {job.status}</p>
 
           {isAuthenticated && (
             <>
-              <button onClick={() => onDeleteClick(job._id)}>delete</button>
+              <button onClick={() => onDeleteClick(job._id)}>Delete</button>
               <button onClick={() => navigate(`/edit-job/${job._id}`)}>
-                edit
+                Edit
               </button>
             </>
           )}
