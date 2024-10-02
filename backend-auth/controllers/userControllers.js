@@ -15,12 +15,14 @@ const generateToken = (_id) => {
 const signupUser = async (req, res) => {
   const {
     name,
-    email,
+    username,
     password,
     phone_number,
     gender,
     date_of_birth,
     membership_status,
+    address,
+    profile_picture
   } = req.body;
   try {
     if (
