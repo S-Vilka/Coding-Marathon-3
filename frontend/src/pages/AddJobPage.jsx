@@ -21,14 +21,17 @@ const AddJobPage = () => {
   const addJob = async (newJob) => {
     try {
       console.log("Adding job:", newJob);
-      const res = await fetch("/api/jobs", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(newJob),
-      });
+      const res = await fetch(
+        "https://backend-auth-zvo1.onrender.com/api/jobs",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(newJob),
+        }
+      );
       if (!res.ok) {
         throw new Error("Failed to add job");
       }

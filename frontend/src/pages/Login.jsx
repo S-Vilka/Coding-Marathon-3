@@ -7,7 +7,9 @@ const Login = ({ setIsAuthenticated }) => {
   const username = useField("username");
   const password = useField("password");
 
-  const { login, error } = useLogin("/api/users/login");
+  const { login, error } = useLogin(
+    "https://backend-auth-zvo1.onrender.com/api/users/login"
+  );
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();

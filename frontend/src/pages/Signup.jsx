@@ -14,7 +14,9 @@ const Signup = ({ setIsAuthenticated }) => {
   const address = useField("text");
   const profile_picture = useField("text");
 
-  const { signup, error } = useSignup("/api/users/signup");
+  const { signup, error } = useSignup(
+    "https://backend-auth-zvo1.onrender.com/api/users/signup"
+  );
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();

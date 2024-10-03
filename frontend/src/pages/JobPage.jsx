@@ -13,12 +13,15 @@ const JobPage = ({ isAuthenticated }) => {
 
   const deleteJob = async (id) => {
     try {
-      const res = await fetch(`/api/jobs/${id}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const res = await fetch(
+        `https://backend-auth-zvo1.onrender.com/api/jobs/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       if (!res.ok) {
         const errorText = await res.text();
         throw new Error(`Failed to delete job: ${errorText}`);
@@ -33,7 +36,9 @@ const JobPage = ({ isAuthenticated }) => {
   useEffect(() => {
     const fetchJob = async () => {
       try {
-        const res = await fetch(`/api/jobs/${id}`);
+        const res = await fetch(
+          `https://backend-auth-zvo1.onrender.com/api/jobs/${id}`
+        );
         if (!res.ok) {
           throw new Error("Network response was not ok");
         }

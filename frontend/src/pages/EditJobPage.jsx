@@ -27,14 +27,17 @@ const EditJobPage = () => {
   const updateJob = async (job) => {
     try {
       console.log("Updating job:", job);
-      const res = await fetch(`/api/jobs/${job.id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(job),
-      });
+      const res = await fetch(
+        `https://backend-auth-zvo1.onrender.com/api/jobs/${job.id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(job),
+        }
+      );
       if (!res.ok) throw new Error("Failed to update job");
       return res.ok;
     } catch (error) {
@@ -47,7 +50,9 @@ const EditJobPage = () => {
   useEffect(() => {
     const fetchJob = async () => {
       try {
-        const res = await fetch(`/api/jobs/${id}`);
+        const res = await fetch(
+          `https://backend-auth-zvo1.onrender.com/api/jobs/${id}`
+        );
         if (!res.ok) {
           throw new Error("Network response was not ok");
         }

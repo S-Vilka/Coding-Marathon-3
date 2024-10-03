@@ -6,20 +6,22 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
     localStorage.removeItem("user");
   };
 
+  // Retrieve user data from localStorage
+  const user = JSON.parse(localStorage.getItem("user"));
+
   return (
     <nav className="navbar">
       <Link to="/">
         <h1>React Jobs</h1>
       </Link>
       <div className="links">
-        {isAuthenticated && (
+        {isAuthenticated && user ? (
           <div>
             <Link to="/jobs/add-job">Add Job</Link>
-            <span>{JSON.parse(localStorage.getItem("user")).email}</span>
+            <span>{user.username}</span>{" "}
             <button onClick={handleClick}>Log out</button>
           </div>
-        )}
-        {!isAuthenticated && (
+        ) : (
           <div>
             <Link to="/login">Login</Link>
             <Link to="/signup">Signup</Link>
